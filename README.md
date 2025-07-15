@@ -38,6 +38,7 @@ Run `AvaloniaSheetTest`
 
 - .NET 6+
 - Avalonia 11+
+- Zero additional dependencies - Only requires Avalonia, no other external libraries
 
 ### **Why Avalonia Sheet?**
 
