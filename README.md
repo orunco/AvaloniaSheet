@@ -29,7 +29,8 @@
 ```bash
 git clone https://github.com/orunco/AvaloniaSheet.git
 cd AvaloniaSheet
-dotnet run
+open project with IDE 
+RUN AvaloniaSheetTest
 ```
 
 ## Requirements
