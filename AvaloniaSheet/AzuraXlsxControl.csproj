@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    </PropertyGroup>
+ 
+    <Import Project="..\Dependency.props" />
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="$(Version_Avalonia)" />
+        <PackageReference Include="Avalonia.Desktop" Version="$(Version_Avalonia)" />
+        <PackageReference Include="Avalonia.ReactiveUI" Version="$(Version_Avalonia)" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="$(Version_Avalonia)" />
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="$(Version_Avalonia)" />
+        <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="$(Version_Avalonia)" />
+
+        <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ExcelDataReader-3.7.0\src\ExcelDataReader\ExcelDataReader.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="Themes\Resources\CutHS.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+</Project>

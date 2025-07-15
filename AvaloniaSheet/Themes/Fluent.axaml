@@ -1,0 +1,180 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <AavaloniaSheet />
+    </Design.PreviewWith>
+
+    <Style Selector="AavaloniaSheet">
+        <Setter Property="Template">
+            <ControlTemplate>
+
+                <Grid RowDefinitions="*,26"
+                      ColumnDefinitions="*,26"
+                      ShowGridLines="False">
+                    <GridCanvasX Grid.Row="0"
+                                 Grid.Column="0"
+                                 Name="PART_GridCanvas">
+                    </GridCanvasX>
+
+                    <ScrollBar Grid.Row="0"
+                               Grid.Column="1"
+                               Visibility="Visible"
+                               SmallChange="20"
+                               Name="PART_VerScrollbar"
+                               Classes="ClassVerticalScrollBar">
+                    </ScrollBar>
+
+                    <Grid Grid.Row="1"
+                          Grid.Column="0"
+                          Name="PART_SheetTabControl">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto" MinWidth="50"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto" MinWidth="200"></ColumnDefinition>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                            <ColumnDefinition Width="*" MinWidth="220"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <!-- SystemColors.ControlColor -->
+                        <Border Grid.Column="0"
+                                Background="#F0F0F0">
+                        </Border>
+                        <Border Grid.Column="1">
+                            <TextBox Classes="ClassSheetName"
+                                     Name="PART_SheetName">
+                            </TextBox>
+                        </Border>
+
+                        <Border Grid.Column="2"
+                                Background="#F0F0F0">
+                        </Border>
+                        <GridSplitter Grid.Column="3"></GridSplitter>
+
+                        <ScrollBar Grid.Column="4"
+                                   SmallChange="20"
+                                   Orientation="Horizontal"
+                                   Visibility="Visible"
+                                   Name="PART_HorScrollbar"
+                                   Classes="ClassHorizontalScrollBar">
+                        </ScrollBar>
+                    </Grid>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <Style Selector="ScrollBar.ClassVerticalScrollBar">
+        <Style Selector="^ /template/ Thumb#thumb">
+            <Setter Property="MinHeight" Value="60" />
+            <Setter Property="MinWidth" Value="26" />
+        </Style>
+        <Style Selector="^ /template/ Thumb#thumb /template/ Border">
+            <Setter Property="CornerRadius" Value="0" />
+        </Style>
+    </Style>
+
+    <Style Selector="ScrollBar.ClassHorizontalScrollBar">
+        <Style Selector="^ /template/ Thumb#thumb">
+            <Setter Property="MinHeight" Value="26" />
+            <Setter Property="MinWidth" Value="180" />
+        </Style>
+        <Style Selector="^ /template/ Thumb#thumb /template/ Border">
+            <Setter Property="CornerRadius" Value="0" />
+        </Style>
+    </Style>
+
+    <Style Selector="TextBox.ClassSheetName">
+        <Setter Property="IsReadOnly" Value="True" />
+
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="BorderThickness" Value="0 0 0 0" />
+        <Setter Property="BorderBrush" Value="#E1E1E1" />
+        <Setter Property="CornerRadius" Value="0" />
+
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="TextAlignment" Value="DetectFromContent" />
+        <!--  <Setter Property="UseLayoutRounding" Value="True"/>  测试表明，和这个无关 -->
+
+        <Style Selector="^:pointerover /template/ Border#PART_ContentPresenterBorder">
+            <Setter Property="BorderBrush" Value="#E1E1E1" />
+            <Setter Property="Background" Value="White" />
+        </Style>
+        <Style Selector="^:focus /template/ Border#PART_ContentPresenterBorder">
+            <Setter Property="BorderBrush" Value="#E1E1E1" />
+            <Setter Property="Background" Value="White" />
+        </Style>
+    </Style>
+
+    <Style Selector="TextBox.ClassInputEditor">
+        <Setter Property="IsReadOnly" Value="True" />
+
+        <!-- <Setter Property="VerticalAlignment" Value="Top" /> -->
+        <!-- <Setter Property="HorizontalAlignment" Value="Stretch" /> -->
+        <!-- <Setter Property="TextAlignment" Value="DetectFromContent" /> -->
+        
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="BorderThickness" Value="0.5" />
+        <Setter Property="BorderBrush" Value="#217346" />
+        <Setter Property="CornerRadius" Value="0" />
+
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+
+        <!--  <Setter Property="UseLayoutRounding" Value="True"/>  测试表明，和这个无关 -->
+
+        <Style Selector="^:pointerover /template/ Border#PART_ContentPresenterBorder">
+            <Setter Property="BorderBrush" Value="#217346" />
+            <Setter Property="Background" Value="White" />
+        </Style>
+        <Style Selector="^:focus /template/ Border#PART_ContentPresenterBorder">
+            <Setter Property="BorderBrush" Value="#217346" />
+            <Setter Property="Background" Value="White" />
+        </Style>
+    </Style>
+    
+    <Style Selector="TextBlock.ClassMenuItem">
+        
+        <Setter Property="FontSize" Value="12" /> 
+ 
+        <Style Selector="^:pointerover"> 
+            <Setter Property="Background" Value="Red" />
+        </Style>
+        <Style Selector="^:focus /template/ Border#PART_ContentPresenterBorder">
+            <Setter Property="BorderBrush" Value="#217346" />
+            <Setter Property="Background" Value="Yellow" />
+        </Style>
+    </Style>
+    
+    <!-- 神似office 2013 就可以了 -->
+    <!-- 参考 Semi.Avalonia\Controls\ContextMenu.axaml -->
+    <!-- 最重要的是直接打开devtool，直接找visualtree中的ContextMenu 直接看归属关系 否则基本写不对 -->
+    <Style Selector="ContextMenu.ClassContextMenu">
+        <Setter Property="MinWidth" Value="200" />
+        
+        <!-- <Setter Property="FontSize" Value="18" />  -->
+        <Style Selector="^ /template/ Border">
+            <Setter Property="CornerRadius" Value="0" />
+            <Setter Property="Padding" Value="1" />
+            <Setter Property="BorderThickness" Value="0.5"></Setter>
+            <Setter Property="BorderBrush" Value="#808080"></Setter>
+        </Style>
+        
+        <Style Selector="^ MenuItem /template/ Border#PART_LayoutRoot">
+            
+            <Setter Property="Padding" Value="2" />
+            
+            <Setter Property="BorderThickness" Value="0.5"></Setter>
+            <Style Selector="^:pointerover"> 
+                <Setter Property="Background" Value="#B3D7F3" /> 
+                <Setter Property="BorderThickness" Value="0.5"></Setter>
+                <Setter Property="BorderBrush" Value="#0078D7"></Setter>
+            </Style>
+        </Style>
+    </Style>
+</Styles>
