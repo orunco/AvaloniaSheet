@@ -1,11 +1,13 @@
 using Avalonia.Controls;
+using Avalonia.Input;
+using Avalonia.Rendering;
 
 namespace Orunco.AvaloniaSheetTest;
 
 public partial class MainWindow : Window{
     public MainWindow(){
         InitializeComponent();
-
+        this.KeyDown += OnKeyDown;
         // InitializeWithArrayImpl();
         InitializeWithPageImpl();
     }
@@ -73,5 +75,33 @@ public partial class MainWindow : Window{
 
         // 挂载
         myAavaloniaSheet.SheetData = sheet;
+    }
+    
+    // 添加F10处理逻辑
+    private bool _debugOverlaysEnabled = false;
+    
+    private void OnKeyDown(object? sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.F10)
+        {
+            _debugOverlaysEnabled = !_debugOverlaysEnabled;
+            UpdateDebugOverlays();
+            e.Handled = true;
+        }
+    }
+    
+    private void UpdateDebugOverlays()
+    {
+        if (_debugOverlaysEnabled)
+        {
+            RendererDiagnostics.DebugOverlays =
+                RendererDebugOverlays.Fps |
+                RendererDebugOverlays.LayoutTimeGraph |
+                RendererDebugOverlays.RenderTimeGraph;
+        }
+        else
+        {
+            RendererDiagnostics.DebugOverlays = RendererDebugOverlays.None;
+        }
     }
 }

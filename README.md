@@ -1,9 +1,9 @@
 
 # **Avalonia Sheet**
 
-**A lightweight, Excel-like grid control for Avalonia UI with virtualized rendering and customizable data sources** ✨
+**A lightweight, Excel-like/spreadsheet-like grid control for Avalonia UI with virtualized rendering and customizable data sources. Supports up to 1,048,576 rows and 16,384 columns.**
 
-![Avalonia Sheet](./preview.gif)
+![Avalonia Sheet](./Preview.gif)
 
 ---
 
